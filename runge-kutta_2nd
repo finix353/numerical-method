@@ -1,0 +1,28 @@
+clc;
+clear all;
+fx=input('enter the function ,f(x)=','s');
+f=eval(['@(x,y)',fx]);
+x0=input('enter the value x0=');
+y0=input('enter the value y0=');
+xp=input('enter the value:');
+h=input('enter the step size:');
+n=(xp-x0)/h;
+x=zeros(1,n+1);
+y=zeros(1, n+1);
+
+x(1) = x0;
+y(1) = y0;
+
+for i=1:n
+    k1=h*f(x(i),y(i));
+    k2=h*f(x(i)+h,y(i)+h);
+
+
+    x(i+1)=x(i)+h;
+    y(i+1)=y(i)+((1/2)*(k1+k2));
+end
+
+fprintf('x= \n');
+disp(x);
+fprintf('y= \n');
+disp(y);
